@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const DEFAULT_HEADER = {
-  accept: "application/json",
+  accept: 'application/json',
   Authorization: `Bearer ${import.meta.env.VITE_TMDB_READ_ACCESS_TOKEN}`,
 };
 
@@ -9,7 +9,7 @@ const DEFAULT_HEADER = {
  * enable: quyết định khi nào mới thực hiện việc gọi API
  */
 export default function useFetch(
-  { url = "", method = "GET", headers = {} },
+  { url = '', method = 'GET', headers = {} },
   { enabled } = { enabled: true },
 ) {
   const [data, setData] = useState({});

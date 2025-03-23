@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 const FormField = ({ control, label, name, type, Component }) => {
   return (
     <div>
-      <p className="mb-1 text-sm font-bold text-[#4B465C]">{label}</p>
+      <p className="text-dark-100 mb-1 text-sm font-bold">{label}</p>
       <Controller
         name={name}
         control={control}

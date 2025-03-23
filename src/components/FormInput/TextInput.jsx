@@ -3,7 +3,18 @@ import PropTypes from 'prop-types';
 
 const TextInput = ({ onChange, name, value, type = 'text' }) => {
   return (
-    <TextField name={name} onChange={onChange} value={value} type={type} />
+    <TextField
+      fullWidth
+      // customize the input MUI component
+      slotProps={{
+        input: { className: 'h-10 px-3 py-2' },
+        htmlInput: { className: '!p-0' },
+      }}
+      name={name}
+      onChange={onChange}
+      value={value}
+      type={type}
+    />
   );
 };
 

@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { createContext, useContext, useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const ModalContext = createContext();
 
@@ -16,9 +16,9 @@ const ModalProvider = ({ children }) => {
   // Ẩn thanh scroll khi hiện popup
   useEffect(() => {
     if (isShowing) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "scroll";
+      document.body.style.overflow = 'scroll';
     }
   }, [isShowing]);
 

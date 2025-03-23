@@ -5,9 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import theme from './configs/muiConfig';
 import ModalProvider from './context/ModalProvider';
 import './index.css';
-import Login from './pages/Login';
-import RegisterPage from './pages/RegisterPage';
+import AuthLayout from './pages/auth/AuthLayout';
+import RegisterPage from './pages/auth/RegisterPage';
 import RootLayout from './pages/RootLayout.jsx';
+import LoginPage from './pages/auth/LoginPage';
+import OTPVerifyPage from './pages/auth/OTPVerifyPage';
 
 // lazy import
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -22,12 +24,22 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/register',
-        element: <RegisterPage />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
+        // Sử dụng laylout chung cho auth
+        element: <AuthLayout />,
+        children: [
+          {
+            path: '/register',
+            element: <RegisterPage />,
+          },
+          {
+            path: '/login',
+            element: <LoginPage />,
+          },
+          {
+            path: '/verify-otp',
+            element: <OTPVerifyPage />,
+          },
+        ],
       },
     ],
   },

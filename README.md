@@ -1,8 +1,9 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Explain Folder
 
-Currently, two official plugins are available:
+- **Service**: Những phần liên quan đến tương tác API thì sẽ viết trong folder service
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## API Documentation
+
+- `https://api.holetex.com/v1/we-connect/api-docs/` -> API sample

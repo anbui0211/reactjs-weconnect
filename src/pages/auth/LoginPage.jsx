@@ -37,7 +37,7 @@ const LoginPage = () => {
         <Button variant="contained">Sign In</Button>
       </form>
       <p className="mt-4">
-        New on our platform? <Link to="/login">Create an account</Link>
+        New on our platform? <Link to="/register">Create an account</Link>
       </p>
     </div>
   );

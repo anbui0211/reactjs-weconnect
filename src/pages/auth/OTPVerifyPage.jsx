@@ -18,7 +18,6 @@ const OTPVerifyPage = () => {
     useVerifyOTPMutation();
 
   const onSubmit = (formData) => {
-    console.log(formData);
     verifyOTP({ email: location.state.email, otp: formData.otp });
   };
 

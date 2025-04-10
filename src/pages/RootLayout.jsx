@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const RootLayout = () => {
   const { open, message, type } = useSelector((state) => {
-    console.log(state);
     return state.snackBar;
   });
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import TextInput from '@/components/FormInput/TextInput';
 import { openSnackBar } from '@/redux/slices/snackBarSlice';
 import { useRegisterMutation } from '@/services/rootApi';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Alert, Button } from '@mui/material';
+import { Alert, Button, CircularProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -48,8 +48,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   function onSubmit(formData) {
-    console.log(formData);
-    register(data);
+    register(formData);
   }
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const RegisterPage = () => {
     }
   }, [isSuccess, data.message, navigate, dispatch]);
 
-  console.log({ data, isLoading, error, isError, errors });
+  // console.log({ data, isLoading, error, isError, errors });
 
   return (
     <div>
@@ -88,6 +87,7 @@ const RegisterPage = () => {
           error={errors['password']}
         />
         <Button variant="contained" type="submit">
+          {isLoading && <CircularProgress size={20} color="inherit" />}
           Sign Up
         </Button>
         {isError && error.data?.message && (

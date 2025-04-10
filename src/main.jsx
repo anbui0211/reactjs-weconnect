@@ -12,6 +12,7 @@ import LoginPage from './pages/auth/LoginPage';
 import OTPVerifyPage from './pages/auth/OTPVerifyPage';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import ProtectedLayout from './pages/ProtectedLayout';
 
 // lazy import
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -22,9 +23,17 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '/',
-        element: <HomePage />,
+        // Sử dụng laylout chung cho các trang cần bảo vệ
+        // Nếu không có token thì sẽ chuyển hướng về trang login
+        element: <ProtectedLayout />,
+        children: [
+          {
+            path: '/',
+            element: <HomePage />,
+          },
+        ],
       },
+
       {
         // Sử dụng laylout chung cho auth
         element: <AuthLayout />,

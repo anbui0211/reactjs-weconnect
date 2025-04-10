@@ -4,6 +4,14 @@ export const rootApi = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_URL_V1,
+    prepareHeaders: (headers, { getState }) => {
+      // getState: Lấy dữ liệu từ localStorage
+      const accessToken = getState().auth.accessToken;
+      if (accessToken) {
+        headers.set('Authorization', `Bearer ${accessToken}`);
+      }
+      return headers;
+    },
   }),
   // Nơi định cấp các endpoint cho API
   endpoints: (builder) => {
@@ -37,10 +45,17 @@ export const rootApi = createApi({
           };
         },
       }),
+      getAuthUser: builder.query({
+        query: () => '/auth-user',
+      }),
     };
   },
 });
 
 // useRegisterMutation : là tên hook được sinh ra từ: use (custom hook) +  register (ndpoint) + builder.mutation
-export const { useRegisterMutation, useLoginMutation, useVerifyOTPMutation } =
-  rootApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useVerifyOTPMutation,
+  useGetAuthUserQuery,
+} = rootApi;

@@ -11,7 +11,13 @@ import RootLayout from './pages/RootLayout.jsx';
 import LoginPage from './pages/auth/LoginPage';
 import OTPVerifyPage from './pages/auth/OTPVerifyPage';
 import { Provider } from 'react-redux';
+<<<<<<< Updated upstream
 import { store } from './redux/store';
+=======
+import { persistor, store } from './redux/store';
+import ProtectedLayout from './pages/ProtectedLayout';
+import { PersistGate } from 'redux-persist/integration/react';
+>>>>>>> Stashed changes
 
 // lazy import
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -46,12 +52,15 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <ModalProvider>
-        <RouterProvider router={router} />
-      </ModalProvider>
-    </ThemeProvider>
+    <PersistGate loading={<p>Loading......</p>} persistor={persistor}>
+      <ThemeProvider theme={theme}>
+        <ModalProvider>
+          <RouterProvider router={router} />
+        </ModalProvider>
+      </ThemeProvider>
+    </PersistGate>
   </Provider>,
 );

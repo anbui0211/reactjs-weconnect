@@ -24,7 +24,6 @@ const RegisterPage = () => {
    */
   const [register, { data = {}, isLoading, error, isSuccess, isError }] =
     useRegisterMutation();
-
   // coi như một tài liệu để hướng dẫn react-hook-form biết được field nào là bắt buộc hoặc optional
   const formSchema = yup.object().shape({
     fullName: yup.string().required('Please enter your full name'),
